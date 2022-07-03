@@ -55,18 +55,18 @@ so the rest (string manipulations, allocations, etc.) doesn't seem worth much ef
 
 ```
 $ vanity-keygen 'love$'
-2022/07/01 03:45:24 Looking for a public key matching love$
-2022/07/01 03:45:25 Generated 232,000 keypairs
+2022/07/03 23:37:04 Looking for a public key matching love$
+2022/07/03 23:37:05 Generated 232,000 keypairs (231,883 Hz)
 […]
-2022/07/01 03:48:00 Generated 36,335,000 keypairs
-2022/07/01 03:48:01 Public key:
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBghf18a0v58TKzdx7urZ1Lv3cfQfySi8WCHaSdClove
-2022/07/01 03:48:01 Private key:
+2022/07/03 23:37:43 Generated 9,697,000 keypairs (248,625 Hz)
+2022/07/03 23:37:43 Public key:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK8qe+Hx2yvkGfoaNwv8p7IMhxk5yIofHqIsTFPrlove
+2022/07/03 23:37:43 Private key:
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtz
-c2gtZWQyNTUxOQAAACAYIX9fGtL+fEys3ce7q2dS793H0H8kovFgh2knQpaL3gAA
-AIiaywRCmssEQgAAAAtzc2gtZWQyNTUxOQAAACAYIX9fGtL+fEys3ce7q2dS793H
-0H8kovFgh2knQpaL3gAAAEAGCrt1RnJFV4IigAwebCePX4wDo1HNnQGsG5tV8JAY
-aBghf18a0v58TKzdx7urZ1Lv3cfQfySi8WCHaSdCloveAAAAAAECAwQF
+c2gtZWQyNTUxOQAAACCvKnvh8dsr5Bn6GjcL/KeyDIcZOciKHx6iLExT65aL3gAA
+AIiaywRCmssEQgAAAAtzc2gtZWQyNTUxOQAAACCvKnvh8dsr5Bn6GjcL/KeyDIcZ
+OciKHx6iLExT65aL3gAAAECmP9LWUFqCvLMq8KCsCUbC+UcXHvHYDQ9y2enu4fTb
+8q8qe+Hx2yvkGfoaNwv8p7IMhxk5yIofHqIsTFPrloveAAAAAAECAwQF
 -----END OPENSSH PRIVATE KEY-----
 ```
