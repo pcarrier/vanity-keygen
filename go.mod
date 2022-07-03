@@ -1,6 +1,6 @@
 module github.com/pcarrier/vanity-keygen
 
-go 1.18
+go 1.17
 
 require (
 	github.com/mikesmitty/edkey v0.0.0-20170222072505-3356ea4e686a // indirect
