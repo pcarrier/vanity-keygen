@@ -15,6 +15,7 @@ import (
 	"os"
 	"regexp"
 	"runtime"
+	"runtime/pprof"
 	"sync/atomic"
 	"time"
 )
@@ -22,7 +23,8 @@ import (
 const syncStep = 1000
 
 var (
-	threads = flag.Int("threads", runtime.NumCPU(), "number of threads to run")
+	threads    = flag.Int("threads", runtime.NumCPU(), "number of threads to run")
+	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
 )
 
 func incr(arr *[]byte) {
@@ -47,6 +49,19 @@ func main() {
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
+
+	if *cpuProfile != "" {
+		f, err := os.Create(*cpuProfile)
+		if err != nil {
+			log.Fatalf("Could not create CPU profile: %v", err)
+		}
+		err = pprof.StartCPUProfile(f)
+		if err != nil {
+			log.Fatalf("Could not profile CPU: %v", err)
+		}
+		defer pprof.StopCPUProfile()
+	}
+
 	researched := regexp.MustCompile(flag.Arg(0))
 
 	log.Printf("Looking for a public key matching %v", researched)
@@ -105,7 +120,7 @@ func main() {
 		case found := <-resultCh:
 			log.Printf("Public key:\n%s", found.pubRepr)
 			log.Printf("Private key:\n%s", found.privRepr)
-			os.Exit(0)
+			return
 		case <-ticker.C:
 			rate := int(float64(attempts) / time.Since(start).Seconds())
 			log.Printf("Generated %s keypairs (%s Hz)", printer.Sprint(atomic.LoadInt64(&attempts)), printer.Sprint(rate))
