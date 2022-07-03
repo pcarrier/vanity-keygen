@@ -50,6 +50,7 @@ func main() {
 	researched := regexp.MustCompile(flag.Arg(0))
 
 	log.Printf("Looking for a public key matching %v", researched)
+	start := time.Now()
 	attempts := int64(0)
 	resultCh := make(chan result, 1)
 
@@ -106,7 +107,8 @@ func main() {
 			log.Printf("Private key:\n%s", found.privRepr)
 			os.Exit(0)
 		case <-ticker.C:
-			log.Printf("Generated %s keypairs", printer.Sprint(atomic.LoadInt64(&attempts)))
+			rate := int(float64(attempts) / time.Since(start).Seconds())
+			log.Printf("Generated %s keypairs (%s Hz)", printer.Sprint(atomic.LoadInt64(&attempts)), printer.Sprint(rate))
 		}
 	}
 }
