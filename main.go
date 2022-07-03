@@ -26,8 +26,7 @@ var (
 )
 
 func incr(arr *[]byte) {
-	length := len(*arr)
-	for i := length - 1; i >= 0; i-- {
+	for i := len(*arr) - 1; i >= 0; i-- {
 		(*arr)[i]++
 		if (*arr)[i] != 0 {
 			break
